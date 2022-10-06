@@ -17,7 +17,7 @@ Base de dados: DataSUS
 
 
 ## Modelo conceitual
-![Modelo Conceitual] (https://github.com/robbintj/API-Cancer-Mama/blob/main/assets/Modelo%20Conceitual.png)
+![Modelo Conceitual](https://github.com/robbintj/API-Cancer-Mama/blob/main/assets/Modelo-Conceitual.png)
 
 
 # Tecnologias utilizadas
