@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
+@RestController
 public class ControllerAgeGroup {
+
     private AgeGroupRepo frepository;
 
     public ControllerAgeGroup(AgeGroupRepo frepository) {
@@ -27,9 +30,19 @@ public class ControllerAgeGroup {
         return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-/*public ResponseEntity<?> findByIdAgeGroup(){
-        // implementar aqui
-}*/
+    @GetMapping("/ageGroup/{id}")
+    public ResponseEntity<?> findByIdAgeGroup(@PathVariable long id){
+        try {
+            Optional<AgeGroup> unidOptional = frepository.findById(id);
+            if (unidOptional.isPresent()){
+                AgeGroup ageGroupUnid =unidOptional.get();
+                return new ResponseEntity<>(ageGroupUnid, HttpStatus.OK);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
     @PostMapping("/ageGroup/novo")
     public AgeGroup newAgeGroup(@RequestBody AgeGroup newAge){
